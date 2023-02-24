@@ -17,6 +17,8 @@ jobs:
           distribution: 'temurin'
       - name: Build
         run: mvn clean install
+        env:
+          GITHUB_TOKEN: ${{secrets.DEPLOY_GITHUB_TOKEN}}
       - name: Deploy
         run: mvn deploy
         env:
