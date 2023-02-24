@@ -37,4 +37,16 @@
             <url>https://maven.pkg.github.com/stacs/maven-repo</url>
         </repository>
     </distributionManagement>
+    <repositories>
+        <repository>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <id>github</id>
+            <url>https://maven.pkg.github.com/stacs/maven-repos</url>
+        </repository>
+    </repositories>
 </project>
