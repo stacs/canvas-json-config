@@ -1,0 +1,51 @@
+{
+  "title":"The Best Tool",
+  "description":"1.3 Test Tool used for documentation purposes.",
+  "oidc_initiation_url":"https://your.oidc_initiation_url",
+  "target_link_uri":"https://your.target_link_uri",
+  "scopes":[
+    "https://purl.imsglobal.org/spec/lti-ags/scope/lineitem",
+    "https://purl.imsglobal.org/spec/lti-ags/scope/result.readonly"
+  ],
+  "extensions":[
+    {
+      "domain":"thebesttool.com",
+      "tool_id":"the-best-tool",
+      "platform":"canvas.instructure.com",
+      "privacy_level":"public",
+      "settings":{
+        "text":"Launch The Best Tool",
+        "icon_url":"https://some.icon.url/tool-level.png",
+        "selection_height": 800,
+        "selection_width": 800,
+        "placements":[
+          {
+            "text":"User Navigation Placement",
+            "icon_url":"https://some.icon.url/my_dashboard.png",
+            "placement":"user_navigation",
+            "message_type":"LtiResourceLinkRequest",
+            "target_link_uri":"https://your.target_link_uri/my_dashboard",
+            "canvas_icon_class":"icon-lti",
+            "custom_fields":{
+              "foo":"$Canvas.user.id"
+            }
+          },
+          {
+            "text":"Editor Button Placement",
+            "icon_url":"https://some.icon.url/editor_tool.png",
+            "placement":"editor_button",
+            "message_type":"LtiDeepLinkingRequest",
+            "target_link_uri":"https://your.target_link_uri/content_selector",
+            "selection_height": 500,
+            "selection_width": 500
+          }
+        ]
+      }
+    }
+  ],
+  "public_jwk_url":"https://your.public_jwk_url",
+  "custom_fields":{
+    "bar":"$Canvas.user.sisid"
+  }
+
+}
