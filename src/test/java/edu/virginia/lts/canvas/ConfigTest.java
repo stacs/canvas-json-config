@@ -4,6 +4,7 @@ import static org.junit.Assert.assertEquals;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import edu.virginia.lts.canvas.placements.CourseNavigation;
 import java.util.Objects;
 import org.junit.Test;
 
@@ -49,6 +50,58 @@ public class ConfigTest {
             .selectionWidth(800)
             .placement(userNavigation)
             .placement(editorButton)
+            .build();
+    Extension extension =
+        Extension.builder()
+            .domain("thebesttool.com")
+            .toolId("the-best-tool")
+            .platform(Extension.CANVAS_PLATFORM)
+            .privacyLevel(Extension.PUBLIC)
+            .settings(settings)
+            .build();
+    Config config =
+        Config.builder()
+            .title("The Best Tool")
+            .description("1.3 Test Tool used for documentation purposes.")
+            .oidcInitiationUrl("https://your.oidc_initiation_url")
+            .targetLinkUri("https://your.target_link_uri")
+            .scope(Config.LINEITEM)
+            .scope(Config.RESULT_READONLY)
+            .extension(extension)
+            .publicJwkUrl("https://your.public_jwk_url")
+            .customField("bar", "$Canvas.user.sisid")
+            .build();
+
+    ObjectMapper mapper = new ObjectMapper();
+    mapper.setSerializationInclusion(JsonInclude.Include.NON_EMPTY);
+    String configJson = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(config);
+
+    assertEquals(mapper.readTree(testConfigJson), mapper.readTree(configJson));
+  }
+
+  @Test
+  public void testConfig_CourseNav() throws Exception {
+    String testConfigJson =
+        new String(
+            Objects.requireNonNull(
+                    getClass().getClassLoader().getResourceAsStream("test_config_course_nav.json"))
+                .readAllBytes());
+
+    CourseNavigation courseNavigation =
+        CourseNavigation.builder()
+            .placement(CourseNavigation.COURSE_NAVIGATION_PLACEMENT)
+            .text("Course Navigation Placement")
+            .iconUrl("https://some.icon.url/my_dashboard.png")
+            .messageType(Placement.LTI_RESOURCE_LINK_REQUEST)
+            .customField("foo", "$Canvas.user.id")
+            .build();
+    Settings settings =
+        Settings.builder()
+            .text("Launch The Best Tool")
+            .iconUrl("https://some.icon.url/tool-level.png")
+            .selectionHeight(800)
+            .selectionWidth(800)
+            .placement(courseNavigation)
             .build();
     Extension extension =
         Extension.builder()

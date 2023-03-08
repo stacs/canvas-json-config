@@ -2,12 +2,14 @@ package edu.virginia.lts.canvas;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.Map;
-import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.Singular;
+import lombok.experimental.SuperBuilder;
 
 @Data
-@Builder
+@SuperBuilder
+@NoArgsConstructor
 public class Placement {
 
   public static final String LTI_RESOURCE_LINK_REQUEST = "LtiResourceLinkRequest";
