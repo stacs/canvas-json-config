@@ -42,9 +42,6 @@
             <snapshots>
                 <enabled>true</enabled>
             </snapshots>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
             <id>github</id>
             <url>https://maven.pkg.github.com/stacs/maven-repos</url>
         </repository>
