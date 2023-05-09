@@ -7,7 +7,7 @@
     <parent>
         <groupId>edu.virginia.its.lts</groupId>
         <artifactId>parent-pom</artifactId>
-        <version>1.0.0-SNAPSHOT</version>
+        <version>1.0.0</version>
     </parent>
 
     <artifactId>canvas-json-config</artifactId>
@@ -43,7 +43,7 @@
                 <enabled>true</enabled>
             </snapshots>
             <id>github</id>
-            <url>https://maven.pkg.github.com/stacs/maven-repos</url>
+            <url>https://maven.pkg.github.com/stacs/maven-repo</url>
         </repository>
     </repositories>
 </project>
